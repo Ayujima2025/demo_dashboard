@@ -1,0 +1,19 @@
+# create_demo_db.py
+import sqlite3
+
+conn = sqlite3.connect("demo.db")
+c = conn.cursor()
+
+# Create a simple users table
+c.execute('''
+    CREATE TABLE users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT
+    )
+''')
+
+# Add sample data
+c.execute("INSERT INTO users (name) VALUES ('Alice'), ('Bob'), ('Charlie')")
+
+conn.commit()
+conn.close()
